@@ -21,136 +21,24 @@ donApp.directive('modalDialog', function() {
 		scope: {
 		show: '='
 	},
-	// replace: true, // Replace with the template below
-	// transclude: true, // we want to insert custom content inside the directive
-	// link: function(scope, element, attrs) {
-	// 	scope.dialogStyle = {};
-	// 	if (attrs.width)
-	// 		scope.dialogStyle.width = attrs.width;
-	// 	if (attrs.height)
-	// 		scope.dialogStyle.height = attrs.height;
-	// 	scope.hideModal_old = function() {
-	// 		console.log('Close');
-	// 		scope.dialogShown = false;
-	// 	};
-	// },
-	// template: '...' // See below
 	};
 });
 
-// donApp.config(['$resourceProvider', function($resourceProvider) {
-// 	// Don't strip trailing slashes from calculated URLs
-// 	$resourceProvider.defaults.stripTrailingSlashes = false;
-// }]);
-
-// donApp.factory('FeedLoader', function ($resource) {
-// 	return $resource('http://ajax.googleapis.com/ajax/services/feed/load', {}, {
-// 		fetch: { method: 'JSONP', params: {v: '1.0', callback: 'JSON_CALLBACK'} }
-// 	});
-// });
-
-// donApp.factory('FeedService', function ($http) {
-// 	return {
-// 	parseFeed : function(url) {
-// 		return $http.jsonp('//ajax.googleapis.com/ajax/services/feed/load?v=1.0&num=50&callback=JSON_CALLBACK&q=' + encodeURIComponent(url));
-// 		}
-// 	}
-// });
-
-
-// donApp.service('FeedList', function ($rootScope, FeedLoader) {
-// 	this.get = function() {
-// 		var feedSources = [
-// 			{title: 'Slashdot', url: 'http://rss.slashdot.org/Slashdot/slashdot'},
-// 			{title: 'Tweakers', url: 'http://feeds.feedburner.com/tweakers/mixed'},
-// 			{title: 'Wired', url: 'http://feeds.wired.com/wired/index'},
-// 		];
-// 		if (feeds.length === 0) {
-// 			for (var i=0; i<feedSources.length; i++) {
-// 				FeedLoader.fetch({q: feedSources[i].url, num: 10}, {}, function (data) {
-// 					var feed = data.responseData.feed;
-// 					feeds.push(feed);
-// 				});
-// 			}
-// 		}
-// 		return feeds;
-// 	};
-// });
-
-
-
-// donApp.factory('newsResource', function($resource) {
-// 	return $resource('http://ajax.googleapis.com/ajax/services/search/news?v=1.0&q=%E6%96%B0%E8%81%9E', {}, {
-// 		get: {
-// 			method: 'JSONP',
-// 			params: { callback: 'JSON_CALLBACK' }
-// 		}
-// 	});
-// });
-
-
-// donApp.config(['$routeProvider', '$locationProvider', function($routeProvider, $locationProvider) {
-// 	$routeProvider
-// 		.when('/login', {
-// 			// templateUrl: '/templates/login.html',
-// 			controller: 'LoginController',
-// 		})
-// 		.when('/designer/:designerKey', {
-// 			// templateUrl: '/templates/designer.html',
-// 			controller: 'DesignerController',
-// 		})
-// 		.otherwise({
-// 			redirectTo: '/'
-// 		});
-// 		$locationProvider.html5Mode(true);
-// 	}
-// ]);
-
-
-// donApp.controller('AppController', function ($scope, $routeParams, $http, $window, $document, $compile, $location) {
-// donApp.controller('AppController', function ($scope, $http, $window, $document, $compile, $location) {
-// donApp.controller('AppController', function ($scope, $timeout, $http, $window, $document) {
 donApp.controller('AppController', function ($scope, $timeout, $http, $window, $document, $compile) {
-// donApp.controller('AppController', function ($scope, $timeout, $http, $window, $document, FeedList, $resource, $rootScope) {
-// donApp.controller('AppController', function ($scope, $timeout, $http, $window, $document, FeedService, FeedList) {
-// donApp.controller('AppController', ['FeedService', 'FeedList', function ($scope, $timeout, $http, $window, $document, FeedService, FeedList) {
-// donApp.controller('AppController', ['newsResource', function ($scope, $timeout, $http, $window, $document, newsResource, $resource) {
-	// newsResource.get(
-	// 	function(successResponse){
-	// 		console.log(successResponse);
-	// 	}
-	// );
-
-
-
-	// $scope.feeds = FeedList.get();
-	// $scope.$on('FeedList', function (event, data) {
-	// 	console.log(data);
-	// 	$scope.feeds = data;
-	// });
-
-	// console.log('$location.$$path =', $location.$$path);	// use $location.$$path
-	// $scope.$location = $location;
-	// $scope.$path = $location.$$path;
+	$scope.exchangeShow = true;
+	$scope.newsShow = false;
 	$scope.dialogShown = false;
+	$scope.amount = 20000;
 	$scope.transactions = [];
 	$scope.arrNews = [];
 
 	$scope.fields = ['Order', 'Currencies', 'Amount', 'Price', 'Date Time'];
 	$scope.fieldsNews = ['Date', 'Title'];
 
-
-
 	$.ajax({
 		url: 'http://ajax.googleapis.com/ajax/services/feed/load?v=1.0&num=8&q=http%3A%2F%2Fnews.google.com%2Fnews%3Foutput%3Drss',
 		dataType: 'jsonp',
 		success: function (data) {
-			// console.log(data);
-			// console.log(data.responseData);
-			// console.log(data.responseData.feed);
-			// console.log(data.responseData['feed']);
-			// console.log(data.responseData['feed'].entries);
-
 			var entries = data.responseData['feed'].entries;
 			var entry = {};
 			var news = {};
@@ -182,8 +70,6 @@ donApp.controller('AppController', function ($scope, $timeout, $http, $window, $
 		},
 		error: function () {}
 	});
-
-
 
 
 	$scope.exchanges = [
@@ -277,10 +163,10 @@ donApp.controller('AppController', function ($scope, $timeout, $http, $window, $
 			$scope.exchanges2[i].ask = Math.round(ask * 10000) / 10000;
 			$scope.exchanges2[i].bid = Math.round(bid * 10000) / 10000;
 		}
-		// $timeout(getAskAndBid, 500);
+		$timeout(getAskAndBid, 500);
 		// $timeout(getAskAndBid, 1500);
 		// $timeout(getAskAndBid, 3500);
-		$timeout(getAskAndBid, 5000);
+		// $timeout(getAskAndBid, 5000);
 	}
 	$timeout(getAskAndBid, 500);
 	// $timeout(getAskAndBid, 1500);
@@ -343,14 +229,7 @@ donApp.controller('AppController', function ($scope, $timeout, $http, $window, $
 		if (Number($scope.amount)) amount = $scope.amount;
 		// if ($scope.amount !== undefined) amount = $scope.amount;
 		
-
 		var now = moment().format('YYYY/MM/DD HH:mm:ss');
-		// console.log('now =', now);
-		// console.log('amount =', $scope.amount);
-
-
-		// console.log('currencies =', currencies);
-		// console.log('price =', price);
 		var transaction = {
 			Order: order,
 			Currencies: currencies,
@@ -360,7 +239,7 @@ donApp.controller('AppController', function ($scope, $timeout, $http, $window, $
 			Color: color
 		};
 		$scope.transactions.unshift(transaction);
-		console.log('transactions =', $scope.transactions);
+		// console.log('transactions =', $scope.transactions);
 	};
 
 
@@ -375,15 +254,6 @@ donApp.controller('AppController', function ($scope, $timeout, $http, $window, $
 			// content: news.content,
 
 		};
-		// console.log('content =', news.content);
-		// var html = news.content;
-		// var el = angular.element(html);
-		// jQuery("#modalContent").append(el);
-		// $compile(el)($scope);
-
-		// Step 1: parse HTML into DOM element
-		// var template = angular.element(html);
-		// var template = angular.element(news.content.replace('"//', '"http://'));
 		angular.element(document.querySelector('.added')).remove();
 
 		var content = news.content.replace(/<img[^>]*>/g,"").replace('"//', '"http://');
@@ -414,208 +284,19 @@ donApp.controller('AppController', function ($scope, $timeout, $http, $window, $
 		$scope.dialogShown = false;
 	};
 
-
-
-
-	// loadFeed=function(e,url){
- //        $scope.currentButtonText = angular.element(e.target).text();
- //        // empty out filter text from last time they put one in, because
- //        // when they hit a new feed it is confusing.
- //        $scope.filterText = "";
- //        console.log("loadFeed / click event fired");
-
- //        if ($scope.currentButtonText == $scope.allFeeds[0].titleText)
- //        {
- //            //console.log($scope.feedSrc);
- //            url = $scope.feedSrc;
- //        }
-
-        
- //        $scope.feedSrc = url;
- //        if (url === undefined || url === "")
- //        {
- //            $scope.phMessage = "Please enter a valid Feed URL & try again.";
- //            return;
- //        }
- //        console.log("button text: " + angular.element(e.target).text());
- //        console.log("value of url: " );
- //        console.log(url);
- //        FeedService.parseFeed(url).then(function(res){
- //            $scope.loadButonText=angular.element(e.target).text();
- //            $scope.feeds=res.data.responseData.feed.entries;
- //        });
- //    }
-
-    
-
+	$scope.togglePage = function(page) {
+		// console.log('page =', page);
+		if (page === 'exchange') {
+			$scope.exchangeShow = true;
+			$scope.newsShow = false;
+		} else if (page === 'news') {
+			$scope.exchangeShow = false;
+			$scope.newsShow = true;
+		}
+	};
 
 	$document.ready(function () {
 		$('.ng-modal-overlay').css({ visibility: 'visible' });
 		$('.ng-modal-dialog').css({ visibility: 'visible' });
-		// angular.element(document.querySelector('.ng-modal-overlay')).css({ visibility: 'visible' });
-		// $.ajax({
-		// 	url: 'http://ajax.googleapis.com/ajax/services/feed/load?v=1.0&num=8&q=http%3A%2F%2Fnews.google.com%2Fnews%3Foutput%3Drss',
-		// 	dataType: 'jsonp',
-		// 	success: function (data) {
-		// 		// console.log(data);
-		// 		// console.log(data.responseData);
-		// 		// console.log(data.responseData.feed);
-		// 		// console.log(data.responseData['feed']);
-		// 		// console.log(data.responseData['feed'].entries);
-		// 		$scope.arrNews = data.responseData['feed'].entries;
-		// 		console.log($scope.arrNews);
-		// 	},
-		// 	error: function () {}
-		// });
-
-
-		// var x2js = new X2JS();
-		// var url = 'http://rss.slashdot.org/Slashdot/slashdot';
-		// var url = 'http://feeds.feedburner.com/tweakers/mixed';
-		// var url = 'http://feeds.wired.com/wired/index';
-
-		// {title: 'Slashdot', url: 'http://rss.slashdot.org/Slashdot/slashdot'},
-		// {title: 'Tweakers', url: 'http://feeds.feedburner.com/tweakers/mixed'},
-		// {title: 'Wired', url: 'http://feeds.wired.com/wired/index'},
-
-
-
-		// $http.jsonp('//ajax.googleapis.com/ajax/services/feed/load?v=1.0&num=50&callback=JSON_CALLBACK&q=' + encodeURIComponent(url));
-
-		// var url = 'http://www.wsj.com/xml/rss/3_7031.xml?callback=jsonp_callback';
-		// var url = 'http://www.bloomberg.com/feed/podcast/first-word.xml?callback=jsonp_callback';
-		// var url = 'http://rss.nytimes.com/services/xml/rss/nyt/Economy.xml?callback=jsonp_callback';
-
-
-		// var url = 'http://ajax.googleapis.com/ajax/services/feed/load?v=1.0&num=8&q=http%3A%2F%2Fnews.google.com%2Fnews%3Foutput%3Drss?callback=jsonp_callback';
-		// var url = 'http://ajax.googleapis.com/ajax/services/feed/load?v=1.0&num=8&q=http%3A%2F%2Fnews.google.com%2Fnews%3Foutput%3Drss';
-
-		// var url = 'http://ajax.googleapis.com/ajax/services/feed/load?v=1.0&num=8&q=http%3A%2F%2Fnews.google.com%2Fnews%3Foutput%3Drss';
-
-
-		// var url = 'http://www.wsj.com/xml/rss/3_7031.xml';
-		// var url = 'http://cdn.rawgit.com/motyar/bcf1d2b36e8777fd77d6/raw/bfa8bc0d2d7990fdb910927815a40b572c0c1078/out.xml';
-		// var url = 'http://rss.cnn.com/rss/money_news_international.rss';
-		// var url = 'http://www.bloomberg.com/feed/podcast/first-word.xml';
-		// var url = 'http://rss.nytimes.com/services/xml/rss/nyt/Economy.xml';
-		// var url = 'http://www.bloomberg.com/tvradio/podcast/cat_markets.xml';
-		// var url = 'http://www.bloomberg.com/tvradio/podcast/cat_news.xml';
-
-		// $.ajax({
-		// 	type: "GET",
-		// 	// url: "books.xml",
-		// 	url: url,
-		// 	dataType: "xml",
-		// 	success: xmlParser
-		// });
-		
-		// $http.jsonp(url)
-		// // $http.jsonp('//ajax.googleapis.com/ajax/services/feed/load?v=1.0&num=50&callback=JSON_CALLBACK&q=' + encodeURIComponent(url))
-		// // $http.get(url)
-		// // $http.head(url)
-		// 	.success(function(data) {
-		// 		console.log('data =', data);
-		// 		// console.log(data.found);
-		// 	})
-		// 	.error(function(data, status, headers, config) {
-		// 		console.log('data =', data);
-		// 		console.log('status =', status);
-		// 		console.log('headers =', headers);
-		// 		console.log('config =', config);
-		// 		// $scope.status = status;
-		// 	});
-
-		// $http.get(base_url + 'assets/js/angularxml/courseDef.xml').then(function(response) {
-		// $http.get(url).then(function(response) {
-		// 	console.log('response =', response);
-		// // var chapters = [];
-		// /*setting up the response*/
-		// 	var json = x2js.xml_str2json(response.data);
-		// 	console.log('json =', json);
-		// // var courseDef = x2js.xml_str2json(response.data);
-		// // $scope.chaptersObj = courseDef.course.navigation.chapter;
-
-		// // /*looping through the chapters*/
-		// // var numOfChapters = $scope.chaptersObj.length;
-		// // for (var i = 0; i < numOfChapters; i++) {
-		// // 	chapters.push({
-		// // 		name: $scope.chaptersObj[i].name,
-		// // 		number: $scope.chaptersObj[i]._number
-		// // 	});
-		// // }
-
-		// // $scope.chapterNames = chapters;
-
-
-		// // jQuery.getFeed({
-		// // 	// url: 'rss.xml',
-		// // 	url: 'http://www.bloomberg.com/feed/podcast/first-word.xml',
-		// // 	success: function(feed) {
-		// // 		alert(feed.title);
-		// // 	}
-		// });
 	});
 });
-// }]);
-
-function xmlParser(data) {
-	// returning from async callbacks is (generally) meaningless
-	console.log(data);
-	// console.log(data.found);
-}
-
-
-    function retrieveFromLocalStorage()
-    {
-      $scope.allFeeds = [];
-      console.log("retrieving localStorage...");
-      try
-      {
-        $scope.allFeeds = JSON.parse(localStorage["feeds"]);
-        console.log($scope.allFeeds.length);
-
-        // console.log(JSON.stringify($scope.allFeeds));
-        if ($scope.allFeeds === null)
-        {
-            console.log("couldn't retrieve feeds" );
-            loadDefaultFeeds();
-        }
-      }
-      catch (ex)
-      {
-        console.log("ex: " + ex);
-        loadDefaultFeeds();
-        saveToLocalStorage($scope.allFeeds);
-      }      
-    }
-
-
-function loadDefaultFeeds()
-{
- $scope.allFeeds = [{titleText:"Load (from textbox)",url:""},
-  {titleText:"CodeProject C#",url:"http://www.codeproject.com/webservices/articlerss.aspx?cat=3"},  {titleText:"ComputerWorld - News",url:"http://www.computerworld.com/index.rss"},
-  {titleText:"Dr. Dobb's",url:"http://www.drdobbs.com/rss/all"},
-  {titleText:"InfoWorld Today's News",url:"http://www.infoworld.com/news/feed"},
-   {titleText:"Inc. Magazine",url:"http://www.inc.com/rss/homepage.xml"},
-   {titleText:"TechCrunch",url:"http://feeds.feedburner.com/TechCrunch"},
-   {titleText:"CNN",url:"http://rss.cnn.com/rss/cnn_topstories.rss"}
-                 ];
-}
-
-function saveToLocalStorage(feeds)
-    {
-      // Put the object into storage
-
-      localStorage.setItem('feeds', angular.toJson(feeds));
-      console.log(angular.toJson(feeds));
-      console.log("wrote feeds to localStorage");
-    }
-
-
-
-
-function jsonp_callback(data) {
-	// returning from async callbacks is (generally) meaningless
-	console.log(data);
-	// console.log(data.found);
-}

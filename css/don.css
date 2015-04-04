@@ -1,3 +1,7 @@
+.clickable {
+	cursor: pointer;
+}
+
 .ng-modal-overlay {
 	/* A dark translucent div that covers the whole screen */
 	position:absolute;
