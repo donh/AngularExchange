@@ -26,8 +26,7 @@ donApp.controller('AppController', function ($scope, $timeout, $http, $window, $
 	// console.log('$location.$$path =', $location.$$path);	// use $location.$$path
 	// $scope.$location = $location;
 	// $scope.$path = $location.$$path;
-	$scope.needLoginPopup = false;
-	$scope.loginDropdownShow = false;
+	$scope.transactions = [];
 
 	$scope.exchanges = [
 		{
@@ -121,7 +120,8 @@ donApp.controller('AppController', function ($scope, $timeout, $http, $window, $
 		}
 		// $timeout(getAskAndBid, 500);
 		// $timeout(getAskAndBid, 1500);
-		$timeout(getAskAndBid, 3500);
+		// $timeout(getAskAndBid, 3500);
+		$timeout(getAskAndBid, 5000);
 	}
 	$timeout(getAskAndBid, 500);
 	// $timeout(getAskAndBid, 1500);
@@ -166,12 +166,32 @@ donApp.controller('AppController', function ($scope, $timeout, $http, $window, $
 	// 	]
 	// ];
 	
-	$scope.loginPopupClose = function()
+	$scope.deal = function(order, exchange)
 	{
-		$scope.needLoginPopup = false;
-		$window.onscroll = null;
-		$document.onmousewheel = null;
+		// console.log('order =', order);
+		// console.log('exchange =', exchange);
+		var currencies = exchange.name;
+		var price = 0;
+		if (order === 'Buy') price = exchange.bid;
+		else if (order === 'Sell') price = exchange.ask;
+
+		var now = moment().format('YYYY/MM/DD HH:mm:ss');
+		console.log('now =', now);
+
+
+		// console.log('currencies =', currencies);
+		// console.log('price =', price);
+		var transaction = {
+			Order: order,
+			Currencies: currencies,
+			Amount: '',
+			Price: price,
+			DateTime: now
+		};
+		$scope.transactions.unshift(transaction);
+		console.log('transactions =', $scope.transactions);
 	};
 
 });
+
 
