@@ -28,6 +28,9 @@ donApp.controller('AppController', function ($scope, $timeout, $http, $window, $
 	// $scope.$path = $location.$$path;
 	$scope.transactions = [];
 
+	$scope.fields = ['Order', 'Currencies', 'Amount', 'Price', 'Date Time'];
+
+
 	$scope.exchanges = [
 		{
 			name: 'USD / JPY',
@@ -90,8 +93,8 @@ donApp.controller('AppController', function ($scope, $timeout, $http, $window, $
 		// var zone = 0.3;
 		var zone = 0.25;
 		var bidHigh = 0.9999;
-		// var bidLow = 0.98;
-		var bidLow = 0.975;
+		var bidLow = 0.98;
+		// var bidLow = 0.975;
 		// var bidLow = 0.97;
 		var exchange = {};
 		for (var i in $scope.exchanges) {
@@ -172,11 +175,22 @@ donApp.controller('AppController', function ($scope, $timeout, $http, $window, $
 		// console.log('exchange =', exchange);
 		var currencies = exchange.name;
 		var price = 0;
-		if (order === 'Buy') price = exchange.bid;
-		else if (order === 'Sell') price = exchange.ask;
+		var color = '';
+		if (order === 'Buy') {
+			price = exchange.bid;
+			color = '#5cb85c';		// green
+		} else if (order === 'Sell') {
+			price = exchange.ask;
+			color = '#d9534f';		// red
+		}
+		var amount = 0;
+		if (Number($scope.amount)) amount = $scope.amount;
+		// if ($scope.amount !== undefined) amount = $scope.amount;
+		
 
 		var now = moment().format('YYYY/MM/DD HH:mm:ss');
-		console.log('now =', now);
+		// console.log('now =', now);
+		// console.log('amount =', $scope.amount);
 
 
 		// console.log('currencies =', currencies);
@@ -184,9 +198,10 @@ donApp.controller('AppController', function ($scope, $timeout, $http, $window, $
 		var transaction = {
 			Order: order,
 			Currencies: currencies,
-			Amount: '',
+			Amount: amount,
 			Price: price,
-			DateTime: now
+			DateTime: now,
+			Color: color
 		};
 		$scope.transactions.unshift(transaction);
 		console.log('transactions =', $scope.transactions);

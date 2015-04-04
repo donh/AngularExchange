@@ -45,6 +45,13 @@
 			<div ng-if="messages.success" ng-bind="messages.success" class="alert alert-success"></div>
 		</div>
 
+		<div class="row">
+			<div class="col-md-offset-7">
+			<!-- <div class="col-md-push-7"> -->
+				Amount
+				<input type="text" ng-model="amount" placeholder="Amount">
+			</div>
+		</div>
 
 		<!-- <div ng-repeat="row in rows track by $index" class="row">
 			<div ng-repeat="exchange in exchanges track by $index2">
@@ -53,6 +60,10 @@
 				<div ng-bind="exchange.ask"></div>
 			</div>
 		</div> -->
+
+		<div style="clear:both;"></div>
+		<br>
+		<br>
 
 
 		<div class="row">
@@ -85,37 +96,61 @@
 
 		<div class="row">
 			<div class="col-md-3"></div>
-			<div ng-repeat="exchange in exchanges2 track by $index" class="col-md-2">
-				<!-- <div class="col-md-4" style="border:5px solid #f90; padding:20px auto 0 auto;"> -->
-				<!-- <div class="col-md-9" style="border:5px solid; padding:20px;"> -->
-				<!-- <div class="col-md-9" style="border:5px solid; padding:15px;"> -->
+				<div ng-repeat="exchange in exchanges2 track by $index" class="col-md-2">
 				<div class="col-md-11">
-					<!-- <div ng-bind="exchange.name" style="text-align:center; border-bottom:3px solid"></div> -->
-					<!-- <div ng-bind="exchange.name" style="text-align:center; width:100%; border:3px solid;"></div> -->
-					<!-- <div ng-bind="exchange.name" class="row" style="text-align:center; border:3px solid;"></div> -->
-					<!-- <div ng-bind="exchange.name" class="row" style="text-align:center; border-width:3px 3px 0px 3px; border-style:solid; background:#BDBDBD;"></div> -->
 					<div class="row" style="text-align:center; border-width:3px 3px 0px 3px; border-style:solid; background:#BDBDBD;">
-						<h3 ng-bind="exchange.name"></h5>
+						<h3 ng-bind="exchange.name"></h3>
 					</div>
-					<!-- <div ng-bind="exchange.name" class="row" style="text-align:center; border-width:5px 5px 0px 5px; border-style:solid"></div> -->
-					<!-- <br> -->
-					<!-- <div class="row" style="text-align:center; border:3px solid;"> -->
 					<div class="row" style="text-align:center; border:3px solid;">
 						<div class="col-md-5" style="float:left; border:3px solid; margin:5px;">
-							<!-- <div ng-bind="exchange.bid"></div> -->
 							<h4 ng-bind="exchange.bid"></h4>
-							<button type="button" class="btn btn-success btn-sm" ng-click="" style="margin-bottom:5px;">Bid</button>
-							<!-- <div class="" ng-click="" style="width:100%; background:green;">Bid</div> -->
+							<button ng-click="deal('Buy', exchange)" type="button" class="btn btn-success btn-sm" style="margin-bottom:5px;">Bid</button>
 						</div>
 						<div class="col-md-5" style="float:left; border:3px solid; margin:5px;">
-							<!-- <div ng-bind="exchange.ask"></div> -->
 							<h4 ng-bind="exchange.ask"></h4>
-							<button type="button" class="btn btn-danger btn-sm" ng-click="" style="margin-bottom:5px;">Ask</button>
-							<!-- <div class="btn-danger" ng-click="">Ask</button> -->
+							<button ng-click="deal('Sell', exchange)" type="button" class="btn btn-danger btn-sm" style="margin-bottom:5px;">Ask</button>
 						</div>
 					</div>
 				</div>
 				<div class="col-md-1"></div>
+			</div>
+		</div>
+
+		<br>
+		<br>
+		<br>
+
+		<!-- <div class="row"> -->
+		<div class="col-md-offset-1">
+			<h4>Transaction History</h4>
+			<div class="row">
+				<ul style="list-style-type:none;">
+					<!-- <li ng-repeat="field in fields track by $index" style="float:left; margin-left:10px;"> -->
+					<!-- <li ng-repeat="field in fields track by $index" style="float:left; width:100px;"> -->
+					<li ng-repeat="field in fields track by $index" class="col-md-2" style="float:left; background:#BDBDBD;">
+						{{field}}
+					</li>
+				</ul>
+			</div>
+
+			<div ng-repeat="transaction in transactions track by $index" class="row">
+				<ul style="list-style-type:none; color:white;">
+					<li class="col-md-2" style="float:left; background:{{transaction.Color}};">
+						{{transaction.Order}}
+					</li>
+					<li class="col-md-2" style="float:left; background:{{transaction.Color}};">
+						{{transaction.Currencies}}
+					</li>
+					<li class="col-md-2" style="float:left; background:{{transaction.Color}};">
+						{{transaction.Amount}}
+					</li>
+					<li class="col-md-2" style="float:left; background:{{transaction.Color}};">
+						{{transaction.Price}}
+					</li>
+					<li class="col-md-2" style="float:left; background:{{transaction.Color}};">
+						{{transaction.DateTime}}
+					</li>
+				</ul>
 			</div>
 		</div>
 
