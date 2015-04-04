@@ -1,19 +1,5 @@
 'use strict';
-// var donApp = angular.module('donApp', ['ngRoute']);
-// var donApp = angular.module('donApp', ['ngResource', 'ngRoute']);
-// var donApp = angular.module('donApp', ['ngRoute', 'ngResource']);
-// var donApp = angular.module('donApp', ['ngResource']);
 var donApp = angular.module('donApp', ['ngModal']);
-// var donApp = angular.module('donApp', []);
-
-
-// donApp.config(function(ngModalDefaultsProvider) {
-// 	ngModalDefaultsProvider.set('closeButtonHtml', 'X');
-// 	// ngModalDefaultsProvider.set('option', 'value');
-// 	// // Or with a hash
-// 	// ngModalDefaultsProvider.set({option: 'value', option2: 'value2'});
-// })
-
 
 donApp.directive('modalDialog', function() {
 	return {
@@ -31,7 +17,6 @@ donApp.controller('AppController', function ($scope, $timeout, $http, $window, $
 	$scope.amount = 20000;
 	$scope.transactions = [];
 	$scope.arrNews = [];
-
 	$scope.fields = ['Order', 'Currencies', 'Amount', 'Price', 'Date Time'];
 	$scope.fieldsNews = ['Date', 'Title'];
 
@@ -46,14 +31,15 @@ donApp.controller('AppController', function ($scope, $timeout, $http, $window, $
 			var content = '';
 			var date = '';
 			var color = '';
-			// console.log('entries =', entries);
 			for (var i in entries) {
 				entry = entries[i];
-				// console.log('entry =', entry);
 				title = entry.title;
 				content = entry.content;
-				// date = entry.publishedDate;
-				date = moment(entry.publishedDate).format('YYYY/MM/DD');
+				// console.log('entry.publishedDate =', entry.publishedDate);
+				date = entry.publishedDate.split(', ')[1];
+				// console.log('date =', date);
+				// date = moment(entry.publishedDate).format('YYYY/MM/DD');
+				date = moment(date, 'DD MMMM YYYY HH:mm:ss +-HHmm').format('YYYY/MM/DD');
 				if (i % 2 === 0) color = '#E6E6E6';
 				else color = '#FFFFFF';
 				news = {
@@ -64,9 +50,6 @@ donApp.controller('AppController', function ($scope, $timeout, $http, $window, $
 				};
 				$scope.arrNews.push(news);
 			}
-			// console.log($scope.arrNews);
-			// console.log($scope.arrNews[5]);
-			// console.log($scope.arrNews[5].title);
 		},
 		error: function () {}
 	});
@@ -114,9 +97,6 @@ donApp.controller('AppController', function ($scope, $timeout, $http, $window, $
 		}
 	];
 
-	// console.log('$scope.exchanges[0] =', $scope.exchanges[0]);
-
-
 	// var USD_JPY = 120.12012;
 	// var AUD_JPY = 91.6816817;
 	// var EUR_CAD = 1.36013063;
@@ -126,31 +106,18 @@ donApp.controller('AppController', function ($scope, $timeout, $http, $window, $
 
 	$scope.timeInMs = 0;
 	var getAskAndBid = function() {
-		// $scope.timeInMs += 500;
-		// console.log('$scope.timeInMs =', $scope.timeInMs);
 		var base = 0;
 		var ask = 0;
 		var bid = 0;
-		// var zone = 0.3;
 		var zone = 0.25;
 		var bidHigh = 0.9999;
 		var bidLow = 0.985;
-		// var bidLow = 0.98;
-		// var bidLow = 0.975;
-		// var bidLow = 0.97;
 		var exchange = {};
 		for (var i in $scope.exchanges) {
 			exchange = $scope.exchanges[i];
 			base = exchange.base;
 			ask = base * (1 + (zone * (Math.random() - 0.5)));
-			// bid = ask * (bidLow + (zone * (Math.random())));
 			bid = ask * (bidLow + (bidHigh - bidLow) * Math.random());
-			// console.log(exchange.name);
-			// console.log('base =', base);
-			// console.log('ask =', ask);
-			// console.log('bid =', bid);
-			// $scope.exchanges[i].ask = ask;
-			// $scope.exchanges[i].bid = bid;
 			$scope.exchanges[i].ask = Math.round(ask * 10000) / 10000;
 			$scope.exchanges[i].bid = Math.round(bid * 10000) / 10000;
 		}
@@ -164,14 +131,8 @@ donApp.controller('AppController', function ($scope, $timeout, $http, $window, $
 			$scope.exchanges2[i].bid = Math.round(bid * 10000) / 10000;
 		}
 		$timeout(getAskAndBid, 500);
-		// $timeout(getAskAndBid, 1500);
-		// $timeout(getAskAndBid, 3500);
-		// $timeout(getAskAndBid, 5000);
 	}
 	$timeout(getAskAndBid, 500);
-	// $timeout(getAskAndBid, 1500);
-	// $timeout(getAskAndBid, 3500);
-
 
 
 	// $scope.rows = [
@@ -214,7 +175,6 @@ donApp.controller('AppController', function ($scope, $timeout, $http, $window, $
 	$scope.deal = function(order, exchange)
 	{
 		// console.log('order =', order);
-		// console.log('exchange =', exchange);
 		var currencies = exchange.name;
 		var price = 0;
 		var color = '';
@@ -227,8 +187,6 @@ donApp.controller('AppController', function ($scope, $timeout, $http, $window, $
 		}
 		var amount = 0;
 		if (Number($scope.amount)) amount = $scope.amount;
-		// if ($scope.amount !== undefined) amount = $scope.amount;
-		
 		var now = moment().format('YYYY/MM/DD HH:mm:ss');
 		var transaction = {
 			Order: order,
@@ -239,7 +197,6 @@ donApp.controller('AppController', function ($scope, $timeout, $http, $window, $
 			Color: color
 		};
 		$scope.transactions.unshift(transaction);
-		// console.log('transactions =', $scope.transactions);
 	};
 
 
@@ -247,45 +204,24 @@ donApp.controller('AppController', function ($scope, $timeout, $http, $window, $
 
 	$scope.showNews = function(news)
 	{
-		// console.log('news =', news);
-		// var content = news.content;
 		$scope.modal = {
 			title: news.title,
-			// content: news.content,
-
 		};
 		angular.element(document.querySelector('.added')).remove();
 
 		var content = news.content.replace(/<img[^>]*>/g,"").replace('"//', '"http://');
 		content = '<div class="added">' + content + '</div>';
 		var template = angular.element(content);
-		// var template = angular.element(news.content);
-		// console.log(angular.element(document.querySelector('#modalContent')).children());
-
-		// Step 2: compile the template
-		// var linkFn = $compile(template);
-
-		// Step 3: link the compiled template with the scope.
-		// var element = linkFn($scope);
-		// console.log('element =', element);
-
-		// Step 4: Append to DOM (optional)
-		// var parent = angular.element(document.querySelector('#modalContent')).append(element);
 		var parent = angular.element(document.querySelector('#modalContent')).append(template);
-		// console.log('parent =', parent);
 		$compile(template)($scope);
-		// parent.appendChild(element);
-
 		$scope.dialogShown = true;
 	};
 
 	$scope.hideModal = function() {
-		// console.log('Close');
 		$scope.dialogShown = false;
 	};
 
 	$scope.togglePage = function(page) {
-		// console.log('page =', page);
 		if (page === 'exchange') {
 			$scope.exchangeShow = true;
 			$scope.newsShow = false;
