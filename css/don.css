@@ -1,0 +1,1239 @@
+/**
+ * @css name:		.hide
+ * @description:	This css hides HTML elements.
+ * @related issues:	WD-112
+ * @author:			Don Hsieh
+ * @since:			02/13/2015
+ * @last modified: 	02/13/2015
+ * @called by:		<div ng-show="messages" class="container hide" ng-style="width:330px;">
+ *					 in php/public/index.html
+ */
+.hide {
+	visibility: hidden;
+}
+
+
+/**
+ * @css name:		#popupSearch
+ * @description:	This css sets responsive width of search popup in layout.jade.
+ * @related issues:	WD-106
+ * @author:			Don Hsieh
+ * @since:			11/17/2014
+ * @last modified: 	11/17/2014
+ * @called by:		#popupSearch
+ *					 in sail/views/layout.jade
+ */
+#popupSearch {
+	width: 85%;
+	/*width: 75%;*/
+	min-width: 800px;
+}
+
+
+.checkboxInRow {
+	/*display: block;*/
+	clear: both;
+	/*margin-top: 5px;*/
+}
+
+
+/**
+ * @css name:		.checkboxInRowMenu
+ * @description:	This css sets format of title of each checkbox row in layout.jade.
+ * @related issues:	WD-106
+ * @author:			Don Hsieh
+ * @since:			11/18/2014
+ * @last modified: 	11/18/2014
+ * @called by:		.checkboxInRowMenu
+ *					 in sail/views/layout.jade
+ */
+.checkboxInRowTitle {
+	float: left;
+	margin-top: 8px;
+}
+
+/**
+ * @css name:		.checkboxInRowMenu
+ * @description:	This css sets format of title of each checkbox row in layout.jade.
+ * @related issues:	WD-106
+ * @author:			Don Hsieh
+ * @since:			11/18/2014
+ * @last modified: 	11/18/2014
+ * @called by:		.checkboxInRowMenu
+ *					 in sail/views/layout.jade
+ */
+.checkboxInRowMenu {
+	float: left;
+	width: 87%;
+	/*width: 92%;*/
+}
+
+/**
+ * @css name:		.checkboxInRow div
+ * @description:	This css sets format of title of each checkbox row in layout.jade.
+ * @related issues:	WD-106
+ * @author:			Don Hsieh
+ * @since:			11/17/2014
+ * @last modified: 	11/18/2014
+ * @called by:		.checkboxInRow div
+ *					 in sail/views/layout.jade
+ */
+.checkboxInRow div {
+	float: left;
+	width: 100px;
+	/*width: 57px;*/
+	height: 22px;
+}
+
+/**
+ * @css name:		.checkboxInRow li
+ * @description:	This css sets format of each checkbox row in layout.jade.
+ * @related issues:	WD-106
+ * @author:			Don Hsieh
+ * @since:			11/17/2014
+ * @last modified: 	11/17/2014
+ * @called by:		.checkboxInRow li
+ *					 in sail/views/layout.jade
+ */
+.checkboxInRow li {
+	float: left;
+	width: 100px;
+	height: 22px;
+	margin-top: 8px;
+	/*list-style-type: none;
+	display: inline;*/
+}
+
+#pin{
+	padding-top: 0.5em;
+}
+
+
+/**
+ * @css name:		.addthis_native_toolbox
+ * @description:	This css sets format of social buttons list in dress/find.jade.
+ * @related issues:	WD-101
+ * @author:			Don Hsieh
+ * @since:			11/14/2014
+ * @last modified: 	11/14/2014
+ * @called by:		.addthis_native_toolbox
+ *					 in sail/views/dress/find.jade
+ */
+.addthis_native_toolbox {
+	position:absolute;
+	margin-left: 30px;
+}
+/*
+social button - tweet
+site:dress/find.jade;
+*/
+.addthis_button_tweet {
+	width:90px;
+}
+/*
+social button - google
+site:dress/find.jade;
+*/
+.addthis_button_google_plusone{
+	width:60px;
+}
+
+
+/**
+ * @css name:		#styleguideMain
+ * @description:	This css sets format of #styleguideMain div in styleguide/page.jade.
+ * @related issues:	WD-105
+ * @author:			Don Hsieh
+ * @since:			11/14/2014
+ * @last modified: 	11/14/2014
+ * @called by:		#styleguideMain
+ *					 in sail/views/styleguide/page.jade
+ */
+#styleguideMain {
+	width: 835px;
+	position: relative;
+}
+
+#styleguideMain img {
+	margin-right: 35px;
+}
+
+/**
+ * @css name:		#styleguideTopMenu
+ * @description:	This css sets format of style guide top menu in styleguide/page.jade.
+ * @related issues:	WD-105
+ * @author:			Don Hsieh
+ * @since:			11/12/2014
+ * @last modified: 	11/14/2014
+ * @called by:		#styleguideTopMenu
+ *					 in sail/views/styleguide/page.jade
+ */
+#styleguideTopMenu {
+	position: absolute;
+	right: 35px;
+	/*top: 202px;*/
+	width: 205px;
+	height: 70px;
+	/*background: #ff9966;*/
+	z-index: 5;
+	display: block;
+	opacity: 0.8;
+}
+
+.styleguideTopMenuLink {
+	margin-top: 7px;
+	height: 28px;
+	display: block;
+	padding: 5px 10px 3px 20px;
+	color: #603813;
+	font-weight: bold;
+	overflow: hidden;
+}
+
+/**
+ * @css name:		.btn_search_dropdown_submit
+ * @description:	This css sets format of "SEARCH DRESSES" button in layout.jade.
+ * @related issues:	WD-099
+ * @author:			Don Hsieh
+ * @since:			11/10/2014
+ * @last modified: 	11/10/2014
+ * @called by:		.btn_search_dropdown_submit
+ *					 in sail/views/layout.jade
+ */
+.btn_search_dropdown_submit { 
+	display:block;
+	color:#fff;
+	border:none;
+	font:bold 10px/13px Arial, Helvetica, sans-serif;
+	text-align:center;
+	margin:0 0 9px;
+	padding:19px 26px;
+	background:#ff6962;
+	-webkit-appearance: button;
+	cursor: pointer;
+}
+
+/**
+ * @css name:		.btn_search_popup_submit
+ * @description:	This css sets format of "SEARCH DRESSES" button in layout.jade.
+ * @related issues:	WD-099
+ * @author:			Don Hsieh
+ * @since:			11/10/2014
+ * @last modified: 	11/10/2014
+ * @called by:		li: div.btn_search_popup_submit(onclick="setSearchTags()") SEARCH DRESSES
+ *					 in sail/views/layout.jade
+ */
+.btn_search_popup_submit { 
+	border:none;
+	display:block;
+	/*background:#acacac;*/
+	background: #ff6962;
+	color:#fff;
+	padding:10px;
+	min-width:159px;
+	font:bold 13px/16px Arial, Helvetica, sans-serif;
+	-webkit-appearance: button;
+	cursor: pointer;
+	vertical-align: middle;
+}
+
+
+/**
+ * @css name:		.footerTitle
+ * @description:	This css sets format of column title in footer in layout.jade.
+ * @related issues:	WD-099
+ * @author:			Don Hsieh
+ * @since:			11/05/2014
+ * @last modified: 	11/05/2014
+ * @called by:		.footerTitle
+ *					 in sail/views/layout.jade
+ */
+.footerTitle { 
+	margin: 0 0 3px;
+	font-weight: bold;
+}
+
+/**
+ * @css name:		.btnLoveThis
+ * @description:	This css sets LOVE THIS button in gray on dress page.
+ * @related issues:	WD-099
+ * @author:			Don Hsieh
+ * @since:			11/05/2014
+ * @last modified: 	11/05/2014
+ * @called by:		.btnLoveThis
+ *					 in sail/views/dress/find.jade
+ */
+.btnLoveThis { 
+	display:block;
+	padding:13px 3px 11px;
+	width:171px;
+	color:#fff;
+	background:#ccc;
+}
+
+.fbLoginButton {
+	padding: 3px;
+	text-shadow: 0 -1px 0 #354c8c;
+	/*background: #354c8c;*/
+	background: #3e59a5;
+	border-top-color: #50609c;
+	direction: ltr;
+	cursor: pointer;
+	border: 0;
+	border-collapse: collapse;
+	border-spacing: 0;
+	-webkit-font-smoothing: antialiased;
+	border-bottom: 1px solid #1a356e;
+	border-left: 1px solid #29447e;
+	border-right: 1px solid #405b91;
+	border-top: 1px solid #29447e;
+}
+
+.fbLoginButton .fbText {
+	color: #fff;
+	/*font-family: "Helvetica neue";*/
+	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+	font-size: 11px;
+	font-weight:bold;
+	line-height: 14px;
+	text-align: left;
+	margin-left: 5px;
+	margin-right: 3px;
+}
+
+#pin {
+	padding-top: 0.5em;
+}
+/*share box*/
+#shareBoxOld {
+	/*width:175px;
+	height: 100px;*/
+	position: fixed;
+	/*top: 150px;
+	right: 35px;*/
+	z-index: 9999999;
+}
+
+/*---*/
+#shareBox {
+	width:175px;
+	/*height: 100px;*/
+	position: fixed;
+	top: 150px;
+	right: 35px;
+	z-index: 99;
+	/*--- below copied from #shareBoxOld ul ---*/
+	color: #fff;
+	font-size: 16px;
+	font-family: "helvetica", arial, tahoma;
+	/*background: #ececec;*/
+	/*--- test for border ---*/
+	border: 1px #000000 solid;
+	background: #ececec;
+}
+
+#shareBoxHead {
+	margin: 0px;
+	width: 100%;
+	background: #000000;
+	padding: 8px;
+	/*margin-bottom: 20px;*/
+}
+
+#shareBoxShareaholic {
+	width: 173px;
+	height: 200px;
+}
+
+#shareBoxPinit {
+	width: 70px;
+	/*height: 20px;*/
+	/*background: #cb2027;*/
+	font-size: 11px;
+	padding-top: 2px;
+	/*text-align: center;*/
+	margin-left: 36px;
+	margin-bottom: 15px;
+}
+
+#shareBoxPinit a {
+	color: #ffffff;
+	font-size: 11px;
+	padding-top: 2px;
+	text-align: center;
+}
+
+#shareBoxDownload {
+	width: 70px;
+	height: 20px;
+	background: #8a8a8a;
+	font-size: 11px;
+	padding-top: 2px;
+	text-align: center;
+	margin-left: 36px;
+	/*margin-left: 57px;*/
+	margin-bottom: 15px;
+}
+
+#shareBoxOld ul {
+	background: #ececec;
+	border: 1px #000000 solid;
+	color: #fff;
+	font-size: 16px;
+	font-family: "helvetica", arial, tahoma;
+}
+
+#shareBoxOld li.head {
+	margin: 0px;
+	width: 100%;
+	background: #000000;
+	padding: 8px;
+	margin-bottom: 20px;
+}
+
+#shareBoxOld li {
+	padding: 8px;
+	width: 130px;
+	height: 40px;
+	margin: 10px 20px 10px 20px;
+}
+
+#shareBox li.pin {
+	background: #ee1c25;
+}
+
+#shareBox li.facebook {
+	background: #0071b9;
+}
+
+#shareBox li.tweet {
+	background: #6dd0f7;
+}
+
+#shareBox li.google {
+	background: #f78155;
+}
+
+#shareBox li.download {
+	background: #8a8a8a;
+	margin-bottom: 20px;
+}
+
+.gray {
+	background: #000000;
+}
+
+.left {
+	float: left;
+}
+
+.right {
+	float: right;
+}
+
+/**
+ * @css name:		.lefttext
+ * @description:	This css sets text align to left.
+ * @related issues:	WD-105
+ * @author:			Don Hsieh
+ * @since:			11/12/2014
+ * @last modified: 	11/12/2014
+ * @called by:		nav(class="footer-navStyleGuideMenu")
+ *					 in sail/views/styleguide/page.jade
+ */
+.lefttext {
+	text-align: left;
+}
+
+
+/**
+ * @css name:		#downloadBox
+ * @description:	This css sets #downloadBox in pink and bottom of style guide.
+ * @related issues:	WD-096, WD-094
+ * @author:			Don Hsieh
+ * @since:			10/28/2014
+ * @last modified: 	10/31/2014
+ * @called by:		#downloadBox
+ *					 in sail/views/styleguide/page.jade
+ */
+#learnMoreBox {
+	/*position: fixed;*/
+	margin: 0 auto;
+	width: 798px;
+	height: 200px;
+	color: #ffffff;
+	background: #d45670;
+	border: 1px #eeeeee solid;
+	font-family: Helvetica;
+	text-align: left;
+}
+
+#downloadBox {
+	margin: 0 auto;
+	position: fixed;
+	width: 490px;
+	height: 240px;
+	color: #000000;
+	background: #ffffff;
+	border: 5px #000000 solid;
+	z-index: 5;
+	font-family: Helvetica;
+	padding: 20px;
+	/*opacity: 0.8;*/
+	/*display: none;*/
+}
+
+#learnMoreForm {
+	width: 600px;
+	font-size: 14px;
+	margin-top: 4px;
+	margin-left: 26px; 
+}
+
+.learnMoreBoxFields, .downloadBoxFields {
+	height: 28px;
+	color: #000000;
+	float: left;
+}
+
+.downloadBoxFields {
+	margin-top: 15px;
+}
+
+#learnMoreBoxSubmit {
+	width: 145px;
+	height: 35px;
+	font-size:16px;
+	color: #ffffff;
+	background: #ff9999;
+	margin-left:35px;
+	margin-top:45px;
+}
+
+#downloadBoxSubmit {
+	width: 145px;
+	height: 35px;
+	font-size:16px;
+	color: #ffffff;
+	background: #ff9999;
+	margin-left:150px;
+	margin-top: 15px;
+}
+
+
+#downloadBoxText {
+	font-size: 14px;
+	margin-top: 4px;
+	margin-left: 26px; 
+}
+
+.downloadBoxFields {
+	margin-top: 15px;
+}
+
+#learnMoreBox img#learnMore {
+	/*margin-right: 35px;*/
+	/*position: fixed;*/
+	top: 0;
+	left: 0; 
+}
+
+#learnMoreBox img#styleGuideIcon {
+	bottom: 0;
+	/*bottom: 0;
+	right: 0;*/
+	float: right;
+	/*float: left;*/
+}
+
+#thankBox {
+	position: fixed;
+	width: 490px;
+	height: 240px;
+	color: #000000;
+	background: #ffffff;
+	border: 5px #000000 solid;
+	z-index: 6;
+	font-family: Helvetica;
+	font-size:14px;
+	padding: 25px;
+	/*display: none;*/
+}
+
+.16 {
+	font-size:16px;
+}
+
+.14 {
+	font-size:14px;
+}
+
+.footerHeading {
+	font-size:14px;
+	font-weight:bold;
+}
+
+.staticPageMainLayout {
+	position: relative;
+	margin: 75px auto;
+	padding: 0 100px;
+	max-width: 1200px;
+}
+
+.staticPageHeading {
+	font-size:18px;
+	font-weight:bold;
+}
+/*
+description:for welcome page style
+related issues:WD-071;
+author:Coomy;
+since:08/18/2014;
+last modified:08/18/2014;
+called by in welcome.jade
+ */
+.simply-bridal-jumbo {
+	background: #fff;
+	padding:10px;
+	padding-top:0px;
+}
+
+.simply-bridal-jumbo h3, .simply-bridal-jumbo h4 {
+	font-size: 24px;
+	color:#ff6666;
+}
+.simply-bridal-jumbo p {
+	font-size: 13px;
+	color:#000000;
+}
+.simply-bridal-jumbo h4 {
+	font-size: 13px;
+}
+.simply-bridal-jumbo .btn-primary{
+	background: #ff6666;
+	border-color: #ff6666;
+}
+.checkbox p {
+	padding-top: 5px;
+	font-size: 14px;
+	color:#666666;
+}
+.checkbox input {
+	height: 16pt;
+	width: 16pt;
+	margin-right: 5px;
+
+}
+
+.black_overlay {
+	/*display: none;*/
+	position: absolute;
+	/*top: 0;*/
+	left: 0;
+	/*width: 100%;
+	height: 100%;
+	width: 1920px;
+	height: 1055px;*/
+
+	background-color: black;
+	z-index: 1001;
+	-moz-opacity: 0.8;
+	opacity: .80;
+	filter: alpha(opacity=80);
+}
+
+.white_content {
+	/*display: none;*/
+	position: absolute;
+	font-family: tahoma, "Times New Roman", Times, serif;
+	font-size: 12px;
+	width: 30%;
+	left: 35%;
+	padding: 16px;
+	/*border: 16px solid orange;*/
+	border: 10px solid #ff6666;
+	background-color: white;
+	z-index: 1002;
+	overflow: auto;
+}
+
+span.zoom-icon {
+	visibility:hidden;
+	position: absolute;
+	top: 8px;
+	right: 8px;
+	filter: alpha(opacity=80);
+	-moz-opacity: 0.8;
+	-khtml-opacity: 0.8;
+	opacity: 0.8;
+	/*
+	top: 5px;
+	right: 5px;
+	*/
+	/*
+	left:40%;
+	top:35%;
+	filter: alpha(opacity=50);
+	-moz-opacity: 0.5;
+	-khtml-opacity: 0.5;
+	opacity: 0.5;
+	*/
+}
+
+/*img.clickable:hover span.zoom-icon {*/
+.item:hover span.zoom-icon {
+	visibility: visible;
+}
+
+.oneline {
+	float: left;
+	/*position: relative;*/
+}
+
+#tagStatus {
+	float: left;
+	position: relative;
+	margin: 20px 0;
+	width: 100%
+}
+
+#tagStatus div {
+	font-weight: bold;
+}
+
+.tagSelected {
+	float: left;
+	position: relative;
+	margin-left: 10px;
+	padding: 1px 20px;
+	/*color: #fff;*/
+	background-color: #ff9999;
+	/*border-color: #ff9999;*/
+	border-radius: 5px;
+	font-weight: bold;
+}
+
+.tagX {
+	float: right;
+	position: relative;
+	margin-left: 5px;
+	color: #ff6666;
+	cursor: pointer;
+	/*color: #fff;*/
+}
+
+.show-me {
+	font-weight: bold;
+	border-radius: 5px;
+	margin-left: 20px;
+}
+
+.navbarHeading {
+	display: block;
+	padding: 3px 8px;
+	background-color: #cccccc;
+	color: #000000;
+	text-decoration: none;
+}
+
+.checkboxgroup {
+	/*width: 20em;*/
+	clear: both;
+	width:100%;
+	margin-bottom: 8px;
+}
+
+.checkboxrow-header {
+	float: left;
+	position: relative;
+	font-weight: bold;
+	width: 80px;
+	margin-bottom:-999999px;
+}
+
+.checkboxrow {
+	float: left;
+	position: relative;
+	left:80px;
+	margin-left: 10px;
+}
+
+.checkboxrow label {
+	position: relative;
+	width: 163px;
+	float: left;
+	vertical-align: middle;
+}
+
+.checkboxrow  input {
+	float:left;
+	margin-right: 3px;
+}
+
+.checkboxrow  span {
+	float:left;
+	font-size: 12px;
+}
+
+#menu-toggle {
+	display: none; /* hide the checkbox */
+}
+
+#menu {
+	display: none;
+	float: left;
+	/*width: 100%;*/
+}
+#menu-toggle:checked + #menu {
+	display: block;
+	width: 100%;
+	position: relative;
+	/*position: absolute;*/
+	/*z-index:100;*/
+	/*display: block;*/
+	padding: 3px 8px;
+	background-color: #ffffff;
+	/*background-color: #ff6666;
+	color: #ffffff;*/
+	text-decoration: none;
+	/*opacity: 0.92;*/
+	opacity: 0.88;
+	/*opacity: 0.8;*/
+	margin: 0 0 50px;
+	overflow: hidden;
+}
+
+
+#footer_links {
+	clear: both;
+	width:100%;
+	background-color:#cccccc;
+}
+
+#footer_links_inner_box {
+	width:80%;
+	margin-left:10%;
+	/*font-family: tahoma, "Times New Roman", Times, serif;
+	font-size: 12px;*/
+}
+
+.footer_icons {
+	float: left;
+}
+
+.footer_link {
+	/*float: left;
+	margin-left: 5px;*/
+	text-align: left;
+	color: #000000;
+	font-family: tahoma, "Times New Roman", Times, serif;
+	font-size: 12px;
+}
+
+#footer {
+	clear: both;
+	width:100%;
+	z-index: 10;
+
+	position: relative;
+	height: 3em;
+	margin-top: -9em;
+	/*
+	position:absolute;
+	height:80px;
+	bottom:20px;
+	text-align:center;
+	*/
+}
+
+/*
+#footer_blank {
+	margin-top: 80px;
+	margin-bottom: 80px;
+	position: relative;
+}
+*/
+#dressMain {
+	margin-top: 50px;
+	margin-bottom: 50px;
+	font-family: tahoma, "Times New Roman", Times, serif;
+	font-size: 12px;
+}
+
+.clickable {
+	cursor: pointer;
+}
+
+.headerDon {
+	background-color:#eeeeee;
+	float:left;
+	width:100%;
+}
+
+.logoDon {
+	float: left;
+	width: 300px;
+	height: 37px;
+	margin: 10px 0 0 10px;
+}
+
+.header-login {
+	float:right;
+	padding: 23px 10px 0 0;'
+}
+
+.header-login a {
+	color:#ff6666;
+	/*display:inline-block*/
+}
+
+/* These styles create the dropdown menus. */
+.nav_wrapper {
+	background-color: #cccccc;
+	display: block;
+	clear: both;
+	margin-right: auto;
+	margin-left: auto;
+	height: 2em;
+
+}
+
+#navbar {
+	font-family: tahoma, "Times New Roman", Times, serif;
+	margin: 0;
+	padding: 0;
+	background-color:#cccccc;
+	left:0; right:0;/* position:absolute;*/
+	text-align: justify;
+}
+
+.nav_wrapper ul ul {
+	display: none;
+}
+
+.nav_wrapper ul li:hover > ul {
+	display: block;
+}
+
+.nav_wrapper ul {
+	background:#cccccc;
+	list-style: none;
+	position: relative;
+	display: inline-table;
+	margin:0px;
+	z-index:100;
+
+}
+
+.nav_wrapper ul li {
+	float: left;
+}
+
+.nav_wrapper ul li:hover {
+	background: #ff6666;
+}
+
+.nav_wrapper ul li:hover a {
+	background: #ff6666;
+	color: #fff;
+	border-bottom: 1px solid #fff;
+}
+
+.nav_wrapper ul li a {
+	display: block; padding:3px 8px;
+	color: #000000; text-decoration: none;
+}
+
+.nav_wrapper ul ul {
+	background: #ff6666;  padding: 0;
+	position: absolute; top: 100%;
+	width: 10em;
+	z-index:100;
+}
+
+.nav_wrapper ul ul li {
+	float: none;
+	position: relative;
+}
+
+.nav_wrapper ul ul li a {
+	padding: 3px 8px;
+	color: #fff;
+}
+.nav_wrapper ul ul li a:hover {
+	background: #ff9999;
+}
+
+.navbar_text {
+	display: block;
+	float:left;
+	padding: 3px 8px;
+	background-color: #cccccc;
+	color: #000000;
+	text-decoration: none;
+}
+
+
+.relatedThumbs {
+	margin-left: auto;
+	/*margin-left: 5px;*/
+	/*margin-right: auto;*/
+}
+
+.relatedThumbs img {
+	float: left;
+	/*margin-left: 5px;*/
+	/*margin-right: 5px;*/
+	margin-right: 10px;
+	/*margin-left: 15px;*/
+	/*margin-right: auto;*/
+	/*margin-left: auto;*/
+}
+
+.dress_bottom {
+	position:absolute;
+	bottom:0px;
+}
+
+.dress_buttons {
+	width: 238px;
+	/*width: 237px;*/
+	background: #fff;
+	cursor: pointer;
+	text-align: center;
+	position:relative;
+	margin: 0 auto;
+	display:none;
+}
+
+.dress_buttons div {
+	display: inline-table;
+	height: 31px;
+	font-family: "helvetica", arial, tahoma;
+	padding-top: 6px;
+	/*padding-top: 10px;*/
+}
+
+.item:hover .dress_buttons {
+	display: block;
+}
+
+.shop_dress {
+	width: 117px;
+	background: #ff6666;
+	color: #fff;
+	margin-right: 2px;
+	font-size:10px;
+}
+
+.shop_dress:hover {
+	background: #ff9999;
+}
+
+.favorite_button {
+	margin: 0px;
+	width: 117px;
+	background: #cccccc;
+	color:#fff;
+	position: relative;
+	font-size:10px;
+	padding-left: 15px;
+}
+
+.favorite_button:hover, .favorite_button.loved {
+	background: #999999;
+}
+
+.dress_designer {
+	padding: 12px;
+	background: #fff;
+	opacity: 0.8;
+	width: 238px;
+	text-align: left;
+	color: #000000;
+}
+
+#dress_text {
+	padding: 10px;
+}
+/* #dress_tags is replaced by #dress_text in views/home/index.jade */
+#dress_tags {
+	padding: 10px;
+	/*
+	background-color:#eeeeee;
+	margin-bottom: 10px;
+	border-style: solid;
+	border-width: 1px;
+	border-color: #cccccc;
+	*/
+}
+
+.favorite_heart {
+	font-size: 22px;
+	position: absolute;
+	/*top: -9px;*/
+	top: -1px;
+	left: 20px;
+}
+
+.favorite_heart.red {
+	color:#ff6666;
+}
+
+.link_text_big {
+	font-size: 15px;
+	font-family: "Helvetica";
+	color:#000000;
+	/*text-align: center;*/
+}
+
+.ink_text_big:link {
+	color:#000000;
+}
+
+.tags a {
+	color:#ff6666;
+}
+
+.item {
+	width: 238px;
+	padding: 10px;
+	margin: 5px auto;
+	padding-top: 20px;
+	-moz-box-shadow: 4px 4px 12px -2px rgba(51, 51, 102, 0.5);
+	-webkit-box-shadow: 4px 4px 12px -2px rgba(51, 51, 102, 0.5);
+	box-shadow: 4px 4px 12px -2px rgba(51, 51, 102, 0.5);
+	margin-right: 5px;
+/*	width: 238px;
+	margin-top: 6px;
+	margin-bottom: 5px;
+	font-family: tahoma, "Times New Roman", Times, serif;
+	font-size: 12px;
+	background-color:#eeeeee;
+	border-style: solid;
+	border-width: 0px;
+	margin-right: 0 auto;
+*/
+}
+
+.link-pink {
+	color: #ff6666;
+	border-color: #ff6666;
+}
+
+a:hover {
+	color: #666666;
+}
+/*
+a.link-pink:hover {
+	color: #666666;
+}
+*/
+
+.link-pink-bold {
+	color: #000000;
+	border-color: #000000;
+	font-size: 13px;
+	font-weight: bold;
+	font-family: "helvetica", arial, tahoma;
+	/*text-align: center;*/
+}
+.link-pink-light{
+	color: #000000;
+	border-color: #000000;
+	font-family: "helvetica", arial, tahoma;
+	/*text-align: center;*/
+}
+.link-pink-bold:hover,.link-pink-light:hover{
+	color:#ff6666;
+}
+
+.center {
+	/*margin-left:auto;
+	margin-right:auto;*/
+	margin: 0 auto;
+	text-align: center;
+}
+
+.centerOld {
+	margin-left:auto;
+	margin-right:auto;
+	width:70%;
+	background-color:#b0e0e6;
+}
+#next {
+	display:block!important;
+	border-radius:5px;
+	/*-moz-border-radius:5px;*/
+	/*-webkit-border-radius:5px;*/
+	border:1px solid #ddd;
+	background:#efefef;
+	text-align:center;
+	font-weight:bold;
+	box-shadow:2px 2px 2px rgba(50,50,50,.4);
+	color:#444;
+	text-decoration:none;
+	padding:5px
+}
+#next:hover {
+	background:#dfdfdf;color:#222
+}
+
+.btn-gray {
+	/*color: #fff;*/
+	background-color: #C0C0C0;
+	border-color: #C0C0C0;
+}
+
+.btn-pink {
+	color: #fff;
+	background-color: #ff9999;
+	border-color: #ff9999;
+	margin-left: 3px;
+	/*
+	http://html-color-codes.info/
+	background-color: #ff9b99;
+	border-color: #ff9b99;
+	*/
+	/*border-color: #b48484;*/
+}
+
+.collection-link {
+	color: #CC6666;
+	font-family: tahoma, "Times New Roman", Georgia, Serif;
+	/*
+	background-color: #ff9999;
+	border-color: #ff9999;
+	http://html-color-codes.info/
+	*/
+}
+
+.login-box {
+	vertical-align: middle;
+}
+
+.login-box label {
+	display: inline-block;
+	width: 70px;
+	padding-top: 5px;
+}
+
+.login-box input{
+	display: inline-block;
+	margin: 5px 0 5px 5px;
+	width: 224px;
+}
+
+.signup-box {
+	float: left;
+	width: 370px;
+	margin-bottom: 5px;
+}
+
+.signup-box label {
+	padding-left: 1px;
+}
+
+.signup-box input {
+	width: 160px;
+}
