@@ -1,0 +1,185 @@
+<!doctype html>
+<!--[if lt IE 7]>			<html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>				<html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>				<html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
+
+<html lang="en" ng-app='donApp'>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<!-- <base href="/"> -->
+	<title>Exchange Platform</title>
+	<meta name="description" content="Currency Exchange">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css"/>
+	<!-- <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/themes/smoothness/jquery-ui.css"/> -->
+	<link rel="stylesheet" href="./css/don.css"/>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.10/angular.min.js"></script>
+	<script src="./js/ng-modal.min.js" type="text/javascript"></script>
+</head>
+<body ng-controller="AppController">
+	<script src='./js/app.js'></script>
+	<div id="wrapper" class="container-fluid">
+		<nav>
+			<div class="row" style="width:90%; border:5px solid; margin: 0 auto;">
+				<ul style="list-style-type:none;">
+					<li style="float:left;">
+						<h4>Exchange Platform</h4>
+					</li>
+					<li ng-click="togglePage('exchange')" class="col-md-offset-9 clickable" style="float:left;">
+						<h4>Exchange</h4>
+					</li>
+					<li ng-click="togglePage('news')" class="clickable" style="float:left; margin-left:20px;">
+						<h4>News</h4>
+					</li>
+				</ul>
+			</div>
+		</nav>
+
+		<div style="clear:both;"></div>
+		<br>
+		<br>
+
+		<div ng-show="exchangeShow" id="exchange" style="width:80%; margin: 0 auto;">
+			<div class="row">
+				<h4 style="float:left;">Currency Exchange</h4>
+				<div class="col-md-offset-7" style="float:left;">
+					Amount
+					<input type="text" ng-model="amount" placeholder="Amount" style="margin-left:5px;">
+				</div>
+			</div>
+
+
+			<div class="row" style="margin: 0 auto; margin-top:20px;">
+				<div class="col-md-3"></div>
+				<div ng-repeat="exchange in exchanges track by $index" class="col-md-2">
+					<div class="col-md-11">
+						<div class="row" style="text-align:center; border-width:3px 3px 0px 3px; border-style:solid; background:#BDBDBD;">
+							<h3 ng-bind="exchange.name"></h3>
+						</div>
+						<div class="row" style="text-align:center; border:3px solid;">
+							<div class="col-md-5" style="float:left; border:3px solid; margin:5px;">
+								<h5 ng-bind="exchange.bid"></h5>
+								<button ng-click="deal('Buy', exchange)" type="button" class="btn btn-success btn-sm" style="margin-bottom:5px;">Bid</button>
+							</div>
+							<div class="col-md-5" style="float:left; border:3px solid; margin:5px;">
+								<h5 ng-bind="exchange.ask"></h5>
+								<button ng-click="deal('Sell', exchange)" type="button" class="btn btn-danger btn-sm" style="margin-bottom:5px;">Ask</button>
+							</div>
+						</div>
+					</div>
+					<div class="col-md-1"></div>
+				</div>
+			</div>
+
+			<br>
+			<br>
+			
+			<div class="row" style="margin: 0 auto;">
+				<div class="col-md-3"></div>
+					<div ng-repeat="exchange in exchanges2 track by $index" class="col-md-2">
+					<div class="col-md-11">
+						<div class="row" style="text-align:center; border-width:3px 3px 0px 3px; border-style:solid; background:#BDBDBD;">
+							<h3 ng-bind="exchange.name"></h3>
+						</div>
+						<div class="row" style="text-align:center; border:3px solid;">
+							<div class="col-md-5" style="float:left; border:3px solid; margin:5px;">
+								<!-- <h4 ng-bind="exchange.bid"></h4> -->
+								<h5 ng-bind="exchange.bid"></h5>
+								<button ng-click="deal('Buy', exchange)" type="button" class="btn btn-success btn-sm" style="margin-bottom:5px;">Bid</button>
+							</div>
+							<div class="col-md-5" style="float:left; border:3px solid; margin:5px;">
+								<h5 ng-bind="exchange.ask"></h5>
+								<button ng-click="deal('Sell', exchange)" type="button" class="btn btn-danger btn-sm" style="margin-bottom:5px;">Ask</button>
+							</div>
+						</div>
+					</div>
+					<div class="col-md-1"></div>
+				</div>
+			</div>
+
+			<br>
+			<br>
+			<br>
+
+			<div class="row" style="margin: 0 auto;">
+				<h4>Transaction History</h4>
+				<div class="row">
+					<ul style="list-style-type:none;">
+						<li ng-repeat="field in fields track by $index" class="col-md-2" style="float:left; background:#BDBDBD;">
+							{{field}}
+						</li>
+					</ul>
+				</div>
+
+				<div ng-repeat="transaction in transactions track by $index" class="row">
+					<ul style="list-style-type:none; color:white;">
+						<li class="col-md-2" style="float:left; background:{{transaction.Color}};">
+							{{transaction.Order}}
+						</li>
+						<li class="col-md-2" style="float:left; background:{{transaction.Color}};">
+							{{transaction.Currencies}}
+						</li>
+						<li class="col-md-2" style="float:left; background:{{transaction.Color}};">
+							{{transaction.Amount}}
+						</li>
+						<li class="col-md-2" style="float:left; background:{{transaction.Color}};">
+							{{transaction.Price}}
+						</li>
+						<li class="col-md-2" style="float:left; background:{{transaction.Color}};">
+							{{transaction.DateTime}}
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+
+		<div ng-show="newsShow" id="news" style="width:80%; margin: 0 auto;">
+			<div class="row" style="width:80%; margin: 0 auto;">
+				<h4>News</h4>
+				<div class="row">
+					<ul style="list-style-type:none;">
+						<li class="col-md-1" style="float:left; background:#BDBDBD;">
+							Date
+						</li>
+						<li class="col-md-7" style="float:left; background:#BDBDBD;">
+							Title
+						</li>
+					</ul>
+				</div>
+				<div ng-repeat="news in arrNews track by $index" class="row">
+					<ul style="list-style-type:none;">
+						<li ng-bind="news.date" class="col-md-1" style="float:left; background:{{news.color}};"></li>
+						<li ng-bind="news.title" ng-click="showNews(news)" class="col-md-7" style="float:left; background:{{news.color}};"></li>
+					</ul>
+				</div>
+			</div>
+
+			<div class="ng-modal" ng-show="dialogShown">
+				<div class="ng-modal-overlay" ng-click="hideModal()"></div>
+				<div class="ng-modal-dialog" ng-style="dialogStyle">
+					<h4 ng-bind="modal.title" class="" style="margin-left:18px; margin-top:11px;"></h4>
+					<div class="ng-modal-close" ng-click="hideModal()" style="float:left;">X</div>
+					<hr>
+					<div id="modalContent" class="ng-modal-dialog-content"></div>
+					<hr>
+					<div class="row" style="margin-bottom:10px;">
+						<button ng-click="hideModal()" type="button" class="btn btn-info btn-sm col-md-offset-11">Close</button>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div ng-view></div>
+		<br>
+		<br>
+	</div>
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+	<!-- <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/jquery-ui.min.js"></script> -->
+	<script src="http://momentjs.com/downloads/moment.js" type="text/javascript"></script>
+	<!--  <script src="//localhost:35729/livereload.js"></script> -->
+</body>
+</html>

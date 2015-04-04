@@ -122,7 +122,7 @@ donApp.controller('AppController', function ($scope, $timeout, $http, $window, $
 			$scope.exchanges[i].bid = Math.round(bid * 10000) / 10000;
 		}
 
-		for (var i in $scope.exchanges2) {
+		for (i in $scope.exchanges2) {
 			exchange = $scope.exchanges2[i];
 			base = exchange.base;
 			ask = base * (1 + (zone * (Math.random() - 0.5)));
@@ -131,7 +131,7 @@ donApp.controller('AppController', function ($scope, $timeout, $http, $window, $
 			$scope.exchanges2[i].bid = Math.round(bid * 10000) / 10000;
 		}
 		$timeout(getAskAndBid, 500);
-	}
+	};
 	$timeout(getAskAndBid, 500);
 
 
